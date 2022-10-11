@@ -1,0 +1,74 @@
+<rss
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"
+	xmlns:media="http://search.yahoo.com/mrss/">
+	<link type="text/css" id="dark-mode" rel="stylesheet" href=""/>
+	<style type="text/css" id="dark-mode-custom-style"/>
+	<channel>
+		<title>
+			<![CDATA[Test XML Feed]]>
+		</title>
+		<description>
+			<![CDATA[Test XML Description]]>
+		</description>
+		<link>https://www.obsidianroundup.org/</link>
+		<image>
+			<url>https://www.obsidianroundup.org/favicon.png</url>
+			<title>Obsidian Roundup</title>
+			<link>https://www.obsidianroundup.org/</link>
+		</image>
+		<generator>Ghost 5.18</generator>
+		<lastBuildDate>Mon, 10 Oct 2022 16:44:26 GMT</lastBuildDate>
+		<atom:link href="https://www.obsidianroundup.org/blog/rss/" rel="self" type="application/rss+xml"/>
+		<ttl>60</ttl>
+		<item>
+			<title>
+				<![CDATA[🌲The Konik Method for Making Useful Notes]]>
+			</title>
+			<description>
+				<![CDATA[How to make notes for reference, not self-improvement: A practical guide to messy notes meant to be used, not admired. ]]>
+			</description>
+			<link>https://www.obsidianroundup.org/the-konik-method-for-making-notes/</link>
+			<guid isPermaLink="false">633d7eb9cb6dbf004d0e025d</guid>
+			<category>
+				<![CDATA[thoughts]]>
+			</category>
+			<dc:creator>
+				<![CDATA[Eleanor Konik]]>
+			</dc:creator>
+			<pubDate>Mon, 10 Oct 2022 12:30:29 GMT</pubDate>
+			<media:content url="https://images.unsplash.com/photo-1592666452220-529326e2588e?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MnwxMTc3M3wwfDF8c2VhcmNofDl8fHB1cnBsZSUyMGdhbGF4eXxlbnwwfHx8fDE2NjUzNzE2MDQ&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=2000" medium="image"/>
+			<content:encoded>
+				<![CDATA[🌠 Test XML encoded content]]>
+			</content:encoded>
+		</item>
+		<item>
+			<title>
+				<![CDATA[🌠 Community Contest & Spaced Repetition Improvements]]>
+			</title>
+			<description>
+				<![CDATA[There's a new interactive medical terminology dictionary, & a step-by-step guide to setting up a second brain in minutes per day. ]]>
+			</description>
+			<link>https://www.obsidianroundup.org/obsidian-october/</link>
+			<guid isPermaLink="false">632eee9974f6d2003d1612a7</guid>
+			<category>
+				<![CDATA[roundup]]>
+			</category>
+			<dc:creator>
+				<![CDATA[Eleanor Konik]]>
+			</dc:creator>
+			<pubDate>Sat, 24 Sep 2022 12:30:10 GMT</pubDate>
+			<content:encoded>
+				<![CDATA[<h2 id="in-the-community">In The Community</h2><ul><li>It&apos;s almost October, so it&apos;s time to gear up for this year&apos;s annual Obsidian October event. The theme is &quot;Back to School&quot; (best creation for college students, graduate students, and specific subject matter will earn bonus prizes) and they&apos;ve expanded the categories to include: new plugin (or significant update), video, demo vault, or written content. Here&apos;s the 
+		<a href="https://forum.obsidian.md/t/obsidian-october-2022-daily-progress-and-learnings/43767">daily progress and learnings</a> thread, and the 
+		<a href="https://publish.obsidian.md/hub/01+-+Community/Events/Obsidian+October+2022">official hub page</a>. There&apos;s more clarification in Discord. If anyone is looking to contribute to an existing plugin, the 
+		<a href="https://publish.obsidian.md/hub/01+-+Community/Contributing+to+the+Community/Plugins+seeking+help">Hub has collected some issues of interest</a>.
+	</li></ul>]]>
+			</content:encoded>
+		</item>
+	</channel>
+	<iframe
+		xmlns="http://www.w3.org/1999/xhtml" class="cleanslate hidden" src="moz-extension://79b8b135-3324-41e2-90d0-683fdceee29d/static/commandline.html" id="cmdline_iframe" loading="lazy" style="height: 0px !important;">
+	</iframe>
+</rss>
