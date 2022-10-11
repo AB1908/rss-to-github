@@ -5,6 +5,7 @@ from github import Github
 from github.Repository import Repository
 from markdownify import markdownify as md
 from feedparser import FeedParserDict
+from github.ContentFile import ContentFile
 
 FEED_URL = "https://www.obsidianroundup.org/blog/rss/"
 COMMUNITY_REPO = "obsidian-community/obsidian-hub"
@@ -13,7 +14,7 @@ ROUNDUP_FOLDER_PATH = "/01 - Community/Obsidian Roundup"
 # obsidian_hub_repo.create_file(roundup_folder_path+"filenamehere", )
 ROUNDUP_BRANCH = "roundup"
 
-def date_conversion(feed_datetime):
+def date_conversion(feed_datetime: FeedParserDict):
     return datetime(year=feed_datetime.tm_year, month=feed_datetime.tm_mon, day=feed_datetime.tm_mday, hour=feed_datetime.tm_hour, minute=feed_datetime.tm_min, second=feed_datetime.tm_sec)
 
 def datetime_from_parsed_feed_datetime(entry: FeedParserDict):
@@ -37,7 +38,7 @@ def convert_feed_html(html_content: str) -> str:
     return md(html_content)
 
 def get_normalized_file_name(entry: FeedParserDict) -> str:
-    return f"{date_from_feed_datetime(entry)} {entry.title[2:]}"
+    return f"{date_from_feed_datetime(entry)} {entry.title[2:]}.md"
 
 def generate_file_with_hub_yaml(entry: FeedParserDict) -> str:
     frontmatter: str = f"---\nlink: {entry.link}/\nauthor: {entry.author}\npublished: {datetime_from_parsed_feed_datetime(entry)}\npublish: true\n---\n\n"
@@ -56,16 +57,24 @@ def open_pr_against_main(entry: FeedParserDict, repo: Repository):
     title = f"Add roundup post for {date_from_feed_datetime(entry)}"
     body = f"Title: {entry.title}\nBody: {entry.link}"
     repo.create_pull(title=title, body=body, base=repo.default_branch, head=ROUNDUP_BRANCH, maintainer_can_modify=True)
+
+def entries_not_synced(synced_list: list[ContentFile], sync_pending_list: list[FeedParserDict]):
+    # The last file is a folder note and not the last synced item
+    last_repo_item_name = synced_list[-2].name
+    pending_file_names = [get_normalized_file_name(entry) for entry in sync_pending_list]
+    return sync_pending_list[0:pending_file_names.index(last_repo_item_name)]
     
 def main():
     d = parse(FEED_URL)
     g = Github(API_KEY)
     obsidian_hub_repo = g.get_repo(COMMUNITY_REPO)
     list_of_roundup_files = obsidian_hub_repo.get_contents(ROUNDUP_FOLDER_PATH)
-    # todo: figure out where to begin from
-    # entries_not_synced()
-    merge_main_into_branch()
+    merge_main_into_branch(obsidian_hub_repo)
     for entry in entries_not_synced(list_of_roundup_files, d.entries):
         if is_roundup_post(entry):
-            add_file_to_repo(entry)
+            add_file_to_repo(entry, obsidian_hub_repo)
             open_pr_against_main(entry, obsidian_hub_repo)
+            break
+
+if __name__ == "__main__":
+    main()
