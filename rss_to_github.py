@@ -53,6 +53,7 @@ def merge_main_into_branch(repo: Repository):
 
 def add_file_to_repo(entry: FeedParserDict, repo: Repository):
     file_contents:str = generate_file_with_hub_yaml(entry)
+    # TODO: Handle 422s for when the file exists already
     return repo.create_file(f"{ROUNDUP_FOLDER_PATH}/{get_normalized_file_name(entry)}", "feat: add new feed item", file_contents, branch=ROUNDUP_BRANCH)# ["commit"]
 
 def open_pr_against_main(entry: FeedParserDict, repo: Repository):
